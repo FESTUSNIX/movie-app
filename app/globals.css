@@ -19,7 +19,7 @@
 
 @layer components {
 	.wrapper {
-		max-width: calc(100vw - 3rem);
+		max-width: calc(100vw - 4rem);
 		margin: 0 auto;
 		width: 100%;
 	}
@@ -32,19 +32,19 @@
 
 	@screen md {
 		.wrapper {
-			max-width: calc(100vw - 10rem);
+			max-width: calc(100vw - 6rem);
 		}
 	}
 
 	@screen xl {
 		.wrapper {
-			max-width: calc(100vw - 16rem);
+			max-width: calc(100vw - 8rem);
 		}
 	}
 
-	@screen 2xl {
+	@screen 3xl {
 		.wrapper {
-			max-width: 1300px;
+			max-width: 1500px;
 		}
 	}
 
@@ -57,5 +57,18 @@
 			rgba(0, 0, 0, 0.35057773109243695) 85%,
 			rgba(0, 0, 0, 0) 96%
 		);
+	}
+
+	.image-cover {
+		position: absolute;
+		inset: 0px;
+
+		background-image: linear-gradient(
+			rgba(0, 0, 0, 0.3) 20%,
+			rgba(0, 0, 0, 0.85) 85%,
+			rgba(0, 0, 0, 0.9) 90%,
+			rgb(0, 0, 0) 100%
+		);
+		/* background-image: radial-gradient(farthest-side at 73% 23%, transparent, rgb(0, 0, 0)); */
 	}
 }

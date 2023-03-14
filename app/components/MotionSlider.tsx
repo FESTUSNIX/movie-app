@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
+import { useEffect } from 'react'
 import usePrevious from '../hooks/usePrevious'
 import useResponsive from '../hooks/useResponsive'
 
@@ -63,6 +64,13 @@ export const MotionSlider = ({ children, page, setPage, className, vertical, dat
 			setPage(page + 1)
 		}
 	}
+
+	useEffect(() => {
+		const interval = setInterval(() => setPage(prevPage => (prevPage === dataLength - 1 ? 0 : prevPage + 1)), 15000)
+		return () => {
+			clearInterval(interval)
+		}
+	}, [])
 
 	return (
 		<AnimatePresence mode='wait' initial={false} custom={{ prevPage, page, vertical }}>
