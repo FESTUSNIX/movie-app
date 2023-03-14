@@ -1,10 +1,13 @@
-import { Hero } from './components'
+import { getPopularMovies } from '@/lib/getPopularMovies'
+import Image from 'next/image'
+import { Hero } from './components/Hero'
 
-export default function Home() {
+export default async function Home() {
+	const popularMovies = await getPopularMovies()
+
 	return (
 		<div>
-			{/* @ts-expect-error Server Component */}
-			<Hero />
+			<Hero data={popularMovies} />
 		</div>
 	)
 }

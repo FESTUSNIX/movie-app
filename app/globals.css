@@ -47,4 +47,15 @@
 			max-width: 1300px;
 		}
 	}
+
+	.vignette {
+		background: rgb(0, 0, 0, 0);
+		background: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 1) 20%,
+			rgba(0, 0, 0, 0.7371323529411764) 50%,
+			rgba(0, 0, 0, 0.35057773109243695) 85%,
+			rgba(0, 0, 0, 0) 96%
+		);
+	}
 }
