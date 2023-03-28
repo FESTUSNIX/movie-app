@@ -1,3 +1,5 @@
 export { Hero } from './Hero'
 export { Navbar } from './Navbar'
-export { MotionSlider } from './MotionSlider'
+export { Button } from './Button'
+export { BrandLogo } from './BrandLogo'
+export { MoviesSlider } from './MoviesSlider'

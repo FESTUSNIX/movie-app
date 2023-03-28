@@ -2,52 +2,72 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
-import { PopularMovie } from '../types/types'
-import { MotionSlider } from './MotionSlider'
+import { MovieList } from '../../types/types'
+import { Button } from './Button'
+import Slider from 'react-slick'
 
-export const Hero = ({ data }: { data: PopularMovie }) => {
-	const [page, setPage] = useState(0)
+type Props = {
+	data: MovieList
+}
 
-	const currentData = data.results[page]
+export const Hero = ({ data }: Props) => {
+	const settings = {
+		dots: true,
+		speed: 800,
+		infinite: true,
+		arrows: false,
+		autoplay: true,
+		autoplaySpeed: 15000,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		appendDots: (dots: any) => <ul>{dots}</ul>,
+		customPaging: () => (
+			<div className='inline-block cursor-pointer p-1'>
+				<button className={`h-2 w-2 rounded-full bg-white/50`}></button>
+			</div>
+		),
+		dotsClass: 'hero-slick-pagination relative z-10 -mt-24 flex items-center justify-center gap-1.5'
+	}
 
 	return (
-		<div className='flex w-full flex-col items-center overflow-x-hidden'>
-			<MotionSlider page={page} setPage={setPage} dataLength={data.results.length}>
-				<div key={currentData.id} className='relative flex max-h-[1000px] flex-col justify-end'>
-					<div className='vignette absolute bottom-0 z-10 w-full py-44 px-24'>
-						<h2 className='mb-4 text-5xl font-bold'>{currentData.title}</h2>
-						<p className='mb-8 max-w-prose'>{currentData.overview}</p>
+		<div className='flex w-full flex-col items-center'>
+			<Slider {...settings} className='w-full'>
+				{data.results.map(result => (
+					<div key={result.id} className='relative flex flex-col justify-end overflow-hidden'>
+						<div className='vignette-top absolute inset-0'></div>
+						<div className='lg:vignette bottom-0 z-10 w-full py-44 lg:absolute'>
+							<div className='wrapper'>
+								<h2 className='mb-4 max-w-2xl font-montserrat text-5xl font-bold'>{result.title}</h2>
+								<p className='mb-8 max-w-prose'>{result.overview}</p>
 
-						<div className='flex items-center gap-4'>
-							<button className='flex items-center gap-2 rounded bg-emerald-600 px-10 py-4 font-bold uppercase'>
-								<Image src='/play-circle.svg' height={20} width={20} alt='Play movie' />
-								<span>play</span>
-							</button>
-							<Link href={`/movie/${currentData.id}`}>
-								<button className='rounded bg-zinc-600 px-10 py-4 font-bold uppercase'>more info</button>
-							</Link>
+								<div className='flex items-center gap-4'>
+									<Link href={`/watch/${result.id}`}>
+										<Button>
+											<Image src='/play-circle.svg' height={20} width={20} alt='Play movie' />
+											<span>play</span>
+										</Button>
+									</Link>
+									<Link href={`/movie/${result.id}`}>
+										<Button secondary>more info</Button>
+									</Link>
+								</div>
+							</div>
+						</div>
+						<div className='absolute top-0 left-0 -z-10 max-w-full lg:relative'>
+							<Image
+								src={'https://image.tmdb.org/t/p/original' + result.backdrop_path}
+								alt={result.title}
+								priority
+								width={1920}
+								height={1000}
+								draggable='false'
+								className='mx-auto max-h-[860px] w-full object-cover'
+							/>
+							<div className='vignette absolute inset-0'></div>
 						</div>
 					</div>
-					<Image
-						src={'https://image.tmdb.org/t/p/original' + currentData.backdrop_path}
-						alt={currentData.title}
-						priority
-						width={1920}
-						height={1000}
-						draggable='false'
-						className='z-0 w-full'
-					/>
-				</div>
-			</MotionSlider>
-
-			<div className='z-10 -mt-24 flex items-center gap-1.5'>
-				{data.results.map((slide, index) => (
-					<div key={slide.id} className='cursor-pointer p-1' onClick={() => setPage(index)}>
-						<div className={`h-2 w-2 rounded-full bg-white/50 ${page === index ? 'priority:bg-white' : ''}`}></div>
-					</div>
 				))}
-			</div>
+			</Slider>
 		</div>
 	)
 }

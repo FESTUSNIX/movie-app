@@ -1,7 +1,7 @@
 'use client'
 
-import { useScrollPosition } from '@/app/hooks/UseScrollPosition (1)'
-import { MovieDetails } from '@/app/types/types'
+import { useScrollPosition } from '@/app/hooks/useScrollPosition'
+import { MovieDetails } from '@/types/types'
 import Image from 'next/image'
 import React from 'react'
 
@@ -17,7 +17,7 @@ export const Background = ({ data }: { data: MovieDetails }) => {
 	}
 
 	return (
-		<div className='fixed top-0 left-0 -z-10' style={{ opacity: styleScrollPosition() }}>
+		<div className='fixed top-0 left-0 -z-10 w-full' style={{ opacity: styleScrollPosition() }}>
 			<div className='image-cover'></div>
 			<Image
 				src={'https://image.tmdb.org/t/p/original' + data.backdrop_path}

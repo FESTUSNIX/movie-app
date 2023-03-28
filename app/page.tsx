@@ -5,7 +5,7 @@ export default async function Home() {
 	const popularMovies = await getPopularMovies(9)
 
 	return (
-		<div>
+		<div className='flex flex-col'>
 			<Hero data={popularMovies} />
 		</div>
 	)

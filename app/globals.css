@@ -6,12 +6,13 @@
 	html {
 		min-height: 100%;
 		height: 100%;
+		font-family: var(--font-open-sans), sans-serif;
 	}
 
 	body {
 		min-height: 100vh;
 		width: 100%;
-		background-color: #000;
+		background-color: theme(colors.bg);
 		color: #fff;
 		overflow-x: hidden;
 	}
@@ -30,15 +31,9 @@
 		}
 	}
 
-	@screen md {
-		.wrapper {
-			max-width: calc(100vw - 6rem);
-		}
-	}
-
 	@screen xl {
 		.wrapper {
-			max-width: calc(100vw - 8rem);
+			max-width: calc(100vw - 14rem);
 		}
 	}
 
@@ -49,26 +44,118 @@
 	}
 
 	.vignette {
-		background: rgb(0, 0, 0, 0);
+		background-color: theme(colors.bg / 5%);
+
 		background: linear-gradient(
 			0deg,
-			rgba(0, 0, 0, 1) 20%,
-			rgba(0, 0, 0, 0.7371323529411764) 50%,
-			rgba(0, 0, 0, 0.35057773109243695) 85%,
-			rgba(0, 0, 0, 0) 96%
+			theme(colors.bg) 20%,
+			theme(colors.bg / 75%) 50%,
+			theme(colors.bg / 35%) 85%,
+			theme(colors.bg / 0%) 96%
+		);
+	}
+
+	.vignette-top {
+		background-image: linear-gradient(
+			theme(colors.bg / 24%),
+			theme(colors.bg / 24%) 2.45%,
+			theme(colors.bg / 23%) 4.91%,
+			theme(colors.bg / 22%) 7.36%,
+			theme(colors.bg / 20%) 9.81%,
+			theme(colors.bg / 18%) 12.27%,
+			theme(colors.bg / 16%) 14.72%,
+			theme(colors.bg / 13%) 17.18%,
+			theme(colors.bg / 10%) 19.63%,
+			theme(colors.bg / 8%) 22.08%,
+			theme(colors.bg / 5%) 24.54%,
+			theme(colors.bg / 3%) 26.99%,
+			theme(colors.bg / 2%) 29.44%,
+			theme(colors.bg / 0.08%) 31.9%,
+			theme(colors.bg / 0.04%) 34.35%,
+			theme(colors.bg / 0%) 36.81%
 		);
 	}
 
 	.image-cover {
 		position: absolute;
 		inset: 0px;
+		color: rgb(5, 150, 105);
 
 		background-image: linear-gradient(
-			rgba(0, 0, 0, 0.3) 20%,
-			rgba(0, 0, 0, 0.85) 85%,
-			rgba(0, 0, 0, 0.9) 90%,
-			rgb(0, 0, 0) 100%
+			theme(colors.bg / 60%) 20%,
+			theme(colors.bg / 85%) 85%,
+			theme(colors.bg / 90%) 90%,
+			theme(colors.bg) 100%
 		);
-		/* background-image: radial-gradient(farthest-side at 73% 23%, transparent, rgb(0, 0, 0)); */
 	}
+}
+
+/* Item slider slick styles */
+
+.items-slider .slick-list {
+	overflow: visible;
+}
+
+.items-slider .slick-slide {
+	padding-right: 16px;
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.items-slider .slick-slide.slick-active {
+	pointer-events: all;
+	opacity: 1;
+}
+
+.items-slider .slick-arrow {
+	width: calc(2rem);
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateX(100%);
+	transition: opacity 0.3s;
+	z-index: 20;
+}
+
+@screen sm {
+	.items-slider .slick-arrow {
+		width: calc(3rem);
+	}
+}
+@screen xl {
+	.items-slider .slick-arrow {
+		width: calc(7rem);
+	}
+}
+
+.items-slider .slick-slider:has(.slick-track:hover) .items-slider .slick-arrow:not(.slick-arrow.slick-disabled),
+.items-slider .slick-arrow:hover {
+	opacity: 1;
+	visibility: visible;
+}
+
+.items-slider .slick-arrow.slick-prev {
+	left: 0;
+	right: unset;
+	transform: translateX(-100%);
+}
+
+.items-slider .slick-arrow.slick-disabled {
+	opacity: 0;
+	visibility: hidden;
+}
+
+@screen 3xl {
+	.items-slider .slick-list {
+		overflow: hidden;
+	}
+}
+
+/* Hero slider */
+
+.hero-slick-pagination .slick-active button {
+	background-color: #fff;
 }

@@ -37,9 +37,8 @@ export type MovieDetails = {
 	vote_count: number
 }
 
-export type PopularMovie = {
+export type MovieList = {
 	page: number
-
 	results: {
 		poster_path: string | null
 		adult: boolean
@@ -58,4 +57,65 @@ export type PopularMovie = {
 	}[]
 	total_results: number
 	total_pages: number
+}
+
+export type MovieCredits = {
+	id: number
+	cast: {
+		adult: boolean
+		gender: number | null
+		id: number
+		known_for_department: string
+		name: string
+		original_name: string
+		popularity: number
+		profile_path: string | null
+		cast_id: number
+		character: string
+		credit_id: string
+		order: number
+	}[]
+	crew: {
+		adult: boolean
+		gender: number | null
+		id: number
+		known_for_department: string
+		name: string
+		original_name: string
+		popularity: number
+		profile_path: string | null
+		credit_id: string
+		department: string
+		job: string
+	}[]
+}
+
+export type PersonDetails = {
+	birthday: string | null
+	known_for_department: string
+	deathday: null | string
+	id: number
+	name: string
+	also_known_as: string[]
+	gender: 0 | 1 | 2 | 3
+	biography: string
+	popularity: number
+	place_of_birth: string | null
+	profile_path: string | null
+	adult: boolean
+	imdb_id: string
+	homepage: string | null
+}
+
+export type PersonImages = {
+	id: number
+	profiles: {
+		aspect_ratio: number
+		file_path: string
+		height: number
+		iso_639_1: null
+		vote_average: number | number
+		vote_count: number
+		width: number
+	}[]
 }
