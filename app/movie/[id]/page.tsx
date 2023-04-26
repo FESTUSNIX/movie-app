@@ -3,12 +3,14 @@ import { getMovieDetails } from '@/lib/getMovieDetails'
 import { getMovieImages } from '@/lib/getMovieImages'
 import Image from 'next/image'
 import { Background } from './components/Background'
-import { getPopularMovies } from '@/lib/getPopularMovies'
 import { getSimilar } from '@/lib/getSimilar'
 import { MoviesSlider } from '../../components/MoviesSlider'
 import { Button } from '@/app/components'
 import Link from 'next/link'
 import { getMovieCredits } from '@/lib/getMovieCredits'
+import { ImageSlider } from '@/app/components/ImageSlider'
+import React from 'react'
+import { LightboxOpener } from '@/app/components/LightboxOpener'
 
 type Props = {
 	params: { id: number }
@@ -22,13 +24,12 @@ export async function generateMetadata({ params }: Props) {
 }
 
 const MovieDetails = async ({ params: { id } }: Props) => {
-	const images = await getMovieImages(id)
-	const details = await getMovieDetails(id)
+	const [images, details] = await Promise.all([getMovieImages(id), getMovieDetails(id)])
 	const similiarMovies = await getSimilar(id)
 	const credits = await getMovieCredits(id)
 
 	return (
-		<div className='flex min-h-screen flex-col'>
+		<div className='wrapper flex flex-col'>
 			<div className='z-10 mb-16 flex h-full w-full grow'>
 				<Background data={details} />
 
@@ -68,19 +69,33 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 							</Button>
 						</Link>
 
-						<Button secondary>(add to favourites)</Button>
+						<Button secondary>
+							<Image src='/bookmark.svg' height={20} width={20} alt='Save to watch list' />
+							<span>save</span>
+						</Button>
 					</div>
 
 					<h2 className='max-w-prose'>{details.overview}</h2>
 				</div>
 			</div>
 
-			<div className='wrapper z-10'>
-				<MoviesSlider data={similiarMovies} title='More like this' />
+			<div className='z-10 flex flex-col gap-12'>
+				<ImageSlider>
+					{images.posters.map((poster, index) => (
+						<LightboxOpener key={poster.file_path} index={index} images={images.posters}>
+							<Image
+								key={poster.file_path}
+								src={'https://image.tmdb.org/t/p/original' + poster.file_path}
+								height={200}
+								width={200}
+								alt='Movie poster'
+								className='flex aspect-[2/3] w-48 cursor-pointer flex-col items-center overflow-hidden rounded bg-neutral-900'
+							/>
+						</LightboxOpener>
+					))}
+				</ImageSlider>
 
-				<h3>Popular cast</h3>
-
-				<div className='flex gap-4'>
+				<ImageSlider>
 					{credits.cast.splice(0, 8).map(person => (
 						<Link
 							href={`/person/${person.id}`}
@@ -99,7 +114,9 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 							</div>
 						</Link>
 					))}
-				</div>
+				</ImageSlider>
+
+				<MoviesSlider data={similiarMovies} title='We recommend' />
 			</div>
 		</div>
 	)

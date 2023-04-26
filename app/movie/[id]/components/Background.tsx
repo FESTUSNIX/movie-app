@@ -17,7 +17,7 @@ export const Background = ({ data }: { data: MovieDetails }) => {
 	}
 
 	return (
-		<div className='fixed top-0 left-0 -z-10 w-full' style={{ opacity: styleScrollPosition() }}>
+		<div className='fixed top-0 left-0 -z-10 w-full max-w-[100vw]' style={{ opacity: styleScrollPosition() }}>
 			<div className='image-cover'></div>
 			<Image
 				src={'https://image.tmdb.org/t/p/original' + data.backdrop_path}

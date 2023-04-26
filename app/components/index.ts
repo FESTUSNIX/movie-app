@@ -1,5 +1,5 @@
 export { Hero } from './Hero'
-export { Navbar } from './Navbar'
+export { Navbar } from '../features/navbar'
 export { Button } from './Button'
 export { BrandLogo } from './BrandLogo'
 export { MoviesSlider } from './MoviesSlider'

@@ -13,7 +13,8 @@ export const BrandLogo = ({ fill = '#ffffff' }: Props) => {
 			viewBox='0 0 75 33.749998'
 			height='45'
 			preserveAspectRatio='xMidYMid meet'
-			version='1.0'>
+			version='1.0'
+			className='max-w-full translate-y-1'>
 			<defs>
 				<g />
 			</defs>

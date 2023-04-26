@@ -1,14 +1,13 @@
 'use client'
 
-import { PersonImages } from '@/types/types'
-import Image from 'next/image'
 import Slider from 'react-slick'
 
 type Props = {
-	images: PersonImages
+	children: React.ReactNode
+	className?: string
 }
 
-export const ImageSlider = ({ images }: Props) => {
+export const ImageSlider = ({ children, className }: Props) => {
 	const settings = {
 		dots: false,
 		speed: 500,
@@ -62,18 +61,8 @@ export const ImageSlider = ({ images }: Props) => {
 	}
 
 	return (
-		<Slider {...settings} className='items-slider'>
-			{images.profiles.map(profile => (
-				<div key={profile.file_path} className='w-full min-w-[140px] max-w-xs'>
-					<Image
-						src={'https://image.tmdb.org/t/p/original' + profile.file_path}
-						height={300}
-						width={200}
-						alt={`Persons photo`}
-						className='aspect-[2/3] rounded'
-					/>
-				</div>
-			))}
+		<Slider {...settings} className={`items-slider ${className}`}>
+			{children}
 		</Slider>
 	)
 }

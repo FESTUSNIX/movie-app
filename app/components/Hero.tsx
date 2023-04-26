@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { MovieList } from '../../types/types'
 import { Button } from './Button'
 import Slider from 'react-slick'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { useState } from 'react'
 
 type Props = {
 	data: MovieList
@@ -29,13 +31,22 @@ export const Hero = ({ data }: Props) => {
 		dotsClass: 'hero-slick-pagination relative z-10 -mt-24 flex items-center justify-center gap-1.5'
 	}
 
+	const [idk, setIdk] = useState(Array.from({ length: 20 }))
+
+	const fetchMoreData = () => {
+		console.log('next')
+		setTimeout(() => {
+			setIdk(idk.concat(Array.from({ length: 20 })))
+		}, 1500)
+	}
+
 	return (
 		<div className='flex w-full flex-col items-center'>
 			<Slider {...settings} className='w-full'>
 				{data.results.map(result => (
 					<div key={result.id} className='relative flex flex-col justify-end overflow-hidden'>
-						<div className='vignette-top absolute inset-0'></div>
-						<div className='lg:vignette bottom-0 z-10 w-full py-44 lg:absolute'>
+						<div className='vignette-top absolute inset-0 z-0'></div>
+						<div className='lg:vignette relative bottom-0 z-10 w-full py-44 lg:absolute'>
 							<div className='wrapper'>
 								<h2 className='mb-4 max-w-2xl font-montserrat text-5xl font-bold'>{result.title}</h2>
 								<p className='mb-8 max-w-prose'>{result.overview}</p>

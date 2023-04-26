@@ -2,15 +2,16 @@ import { getMovieDetails } from '@/lib/getMovieDetails'
 import { getPersonDetails } from '@/lib/getPersonDetails'
 import { getPersonImages } from '@/lib/getPersonImages'
 import Image from 'next/image'
-import { ImageSlider } from './components/ImageSlider'
+import { ImageSlider } from '../../components/ImageSlider'
+import { LightboxOpener } from '@/app/components/LightboxOpener'
 
 type Props = {
 	params: { id: number }
 }
 
 export async function generateMetadata({ params }: Props) {
-	const movie = await getMovieDetails(params.id)
-	const title = movie.title + ' | Novies'
+	const person = await getPersonDetails(params.id)
+	const title = person.name + ' | Novies'
 
 	return { title }
 }
@@ -28,6 +29,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 						height={200}
 						width={200}
 						alt={personDetails.name}
+						priority
 						className=''
 					/>
 
@@ -46,7 +48,21 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 				</div>
 			</div>
 
-			<ImageSlider images={personImages} />
+			<ImageSlider>
+				{personImages.profiles.map((image, index) => (
+					<LightboxOpener key={image.file_path} index={index} images={personImages.profiles}>
+						<div className='w-full min-w-[140px] max-w-xs cursor-pointer'>
+							<Image
+								src={'https://image.tmdb.org/t/p/original' + image.file_path}
+								height={300}
+								width={200}
+								alt={`Photo of ${personDetails.name}`}
+								className='aspect-[2/3] rounded'
+							/>
+						</div>
+					</LightboxOpener>
+				))}
+			</ImageSlider>
 		</div>
 	)
 }

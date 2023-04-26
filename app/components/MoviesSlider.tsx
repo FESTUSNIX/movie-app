@@ -3,7 +3,9 @@
 import { MovieList } from '@/types/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import Slider from 'react-slick'
+import { ImageSlider } from './ImageSlider'
+import placeholderImage from '../../public/ef3-placeholder-image.jpg'
+import { SectionHeading } from './SectionHeading'
 
 type Props = {
 	data: MovieList
@@ -11,63 +13,11 @@ type Props = {
 }
 
 export const MoviesSlider = ({ data, title }: Props) => {
-	const settings = {
-		dots: false,
-		speed: 500,
-		infinite: false,
-		slidesToShow: 7,
-		slidesToScroll: 7,
-		responsive: [
-			{
-				breakpoint: 1400,
-				settings: {
-					slidesToShow: 6,
-					slidesToScroll: 6
-				}
-			},
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 5,
-					slidesToScroll: 5
-				}
-			},
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 4
-				}
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 3
-				}
-			},
-			{
-				breakpoint: 576,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2
-				}
-			},
-			{
-				breakpoint: 370,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-		]
-	}
-
 	return (
-		<div className='items-slider my-8'>
-			<h3 className='mb-3 font-montserrat text-xl font-semibold'>{title}</h3>
+		<div className='my-8'>
+			<SectionHeading>{title}</SectionHeading>
 
-			<Slider {...settings} className='items-start justify-start'>
+			<ImageSlider>
 				{data.results.map(movie => (
 					<Link
 						href={`/movie/${movie.id}`}
@@ -80,7 +30,7 @@ export const MoviesSlider = ({ data, title }: Props) => {
 							</span>
 						</h4>
 						<Image
-							src={'https://image.tmdb.org/t/p/original' + movie.poster_path}
+							src={movie.poster_path ? 'https://image.tmdb.org/t/p/original' + movie.poster_path : placeholderImage}
 							alt={movie.title}
 							width={300}
 							height={300}
@@ -89,7 +39,7 @@ export const MoviesSlider = ({ data, title }: Props) => {
 						<div className='absolute inset-0 bg-black/40 opacity-0 duration-300 ease-in-out group-hover:opacity-100'></div>
 					</Link>
 				))}
-			</Slider>
+			</ImageSlider>
 		</div>
 	)
 }

@@ -4,6 +4,8 @@ import './globals.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Footer } from './components/Footer'
+import { Lightbox } from './features/lightbox'
+import { LightboxProvider } from './features/lightbox/context/LightboxContext'
 
 const montserrat = Montserrat({
 	subsets: ['latin'],
@@ -24,9 +26,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang='en' className={`${montserrat.variable} ${openSans.variable}`}>
 			<body>
-				<Navbar />
-				{children}
-				<Footer />
+				<LightboxProvider>
+					<Navbar />
+					<div className='z-0 flex min-h-screen flex-col'>{children}</div>
+					<Footer />
+					<Lightbox />
+				</LightboxProvider>
 			</body>
 		</html>
 	)
