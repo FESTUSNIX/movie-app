@@ -8,6 +8,7 @@ import starIcon from '@/public/star.svg'
 import placeholderImage from '@/public/ef3-placeholder-image.jpg'
 import { MotionConfig, motion } from 'framer-motion'
 import { formatMinutes } from '@/app/utils/formatMinutes'
+import imagePrefix from '@/app/assets/imagePrefix'
 
 type Props = {
 	result: BasicMovieDetails
@@ -104,7 +105,7 @@ export const SearchResult = ({ result }: Props) => {
 				</motion.div>
 
 				<Image
-					src={result.backdrop_path ? 'https://image.tmdb.org/t/p/original' + result.backdrop_path : placeholderImage}
+					src={result.backdrop_path ? imagePrefix + result.backdrop_path : placeholderImage}
 					alt={result.title ?? 'Movie'}
 					width={500}
 					height={300}

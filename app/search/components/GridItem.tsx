@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import placeholderImage from '@/public/ef3-placeholder-image.jpg'
+import imagePrefix from '@/app/assets/imagePrefix'
 
 type Props = {
 	result: SearchMultiResult
@@ -11,7 +12,7 @@ type Props = {
 export const GridItem = ({ result }: Props) => {
 	return (
 		<Link
-			href={`/movie/${result.id}`}
+			href={`/${result.media_type}/${result.id}`}
 			className='group relative overflow-hidden rounded-xl border-2 border-transparent duration-500 hover:scale-105 hover:border-white'>
 			<h4 className='absolute z-10 mx-2 my-2 overflow-hidden text-sm font-bold'>
 				<span className='block -translate-y-full opacity-0 duration-300 group-hover:translate-y-0 group-hover:opacity-100'>
@@ -20,7 +21,7 @@ export const GridItem = ({ result }: Props) => {
 			</h4>
 
 			<Image
-				src={result.poster_path ? 'https://image.tmdb.org/t/p/original' + result.poster_path : placeholderImage}
+				src={result.poster_path ? imagePrefix + result.poster_path : placeholderImage}
 				alt={'title' in result ? result.title : result.name}
 				width={500}
 				height={300}

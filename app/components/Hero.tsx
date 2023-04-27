@@ -7,6 +7,7 @@ import { Button } from './Button'
 import Slider from 'react-slick'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useState } from 'react'
+import imagePrefix from '../assets/imagePrefix'
 
 type Props = {
 	data: MovieList
@@ -66,7 +67,7 @@ export const Hero = ({ data }: Props) => {
 						</div>
 						<div className='absolute top-0 left-0 -z-10 max-w-full lg:relative'>
 							<Image
-								src={'https://image.tmdb.org/t/p/original' + result.backdrop_path}
+								src={imagePrefix + result.backdrop_path}
 								alt={result.title}
 								priority
 								width={1920}

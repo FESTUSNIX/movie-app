@@ -4,6 +4,7 @@ import { getPersonImages } from '@/lib/getPersonImages'
 import Image from 'next/image'
 import { ImageSlider } from '../../components/ImageSlider'
 import { LightboxOpener } from '@/app/components/LightboxOpener'
+import imagePrefix from '@/app/assets/imagePrefix'
 
 type Props = {
 	params: { id: number }
@@ -25,7 +26,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 			<div className='mx-auto'>
 				<div key={personDetails.id} className='flex flex-col items-center overflow-hidden'>
 					<Image
-						src={'https://image.tmdb.org/t/p/original' + personDetails.profile_path}
+						src={imagePrefix + personDetails.profile_path}
 						height={200}
 						width={200}
 						alt={personDetails.name}
@@ -53,7 +54,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 					<LightboxOpener key={image.file_path} index={index} images={personImages.profiles}>
 						<div className='w-full min-w-[140px] max-w-xs cursor-pointer'>
 							<Image
-								src={'https://image.tmdb.org/t/p/original' + image.file_path}
+								src={imagePrefix + image.file_path}
 								height={300}
 								width={200}
 								alt={`Photo of ${personDetails.name}`}

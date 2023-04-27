@@ -2,15 +2,12 @@ import { formatMinutes } from '@/app/utils/formatMinutes'
 import { getMovieDetails } from '@/lib/getMovieDetails'
 import { getMovieImages } from '@/lib/getMovieImages'
 import Image from 'next/image'
-import { Background } from './components/Background'
 import { getSimilar } from '@/lib/getSimilar'
-import { MoviesSlider } from '../../components/MoviesSlider'
-import { Button } from '@/app/components'
+import { Background, Button, MoviesSlider, ImageSlider, LightboxOpener } from '@/app/components'
 import Link from 'next/link'
 import { getMovieCredits } from '@/lib/getMovieCredits'
-import { ImageSlider } from '@/app/components/ImageSlider'
 import React from 'react'
-import { LightboxOpener } from '@/app/components/LightboxOpener'
+import imagePrefix from '@/app/assets/imagePrefix'
 
 type Props = {
 	params: { id: number }
@@ -31,13 +28,13 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 	return (
 		<div className='wrapper flex flex-col'>
 			<div className='z-10 mb-16 flex h-full w-full grow'>
-				<Background data={details} />
+				<Background imagePath={details.backdrop_path} />
 
 				<div className='wrapper grow pt-64'>
 					<h1 aria-label={details.title} className='mb-2 font-montserrat'>
 						{images.logos.length ? (
 							<Image
-								src={'https://image.tmdb.org/t/p/original' + images.logos[0].file_path}
+								src={imagePrefix + images.logos[0].file_path}
 								alt={details.title}
 								width={400}
 								height={400}
@@ -85,7 +82,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 						<LightboxOpener key={poster.file_path} index={index} images={images.posters}>
 							<Image
 								key={poster.file_path}
-								src={'https://image.tmdb.org/t/p/original' + poster.file_path}
+								src={imagePrefix + poster.file_path}
 								height={200}
 								width={200}
 								alt='Movie poster'
@@ -102,7 +99,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 							key={person.id}
 							className='flex w-48 flex-col items-center overflow-hidden rounded bg-neutral-900'>
 							<Image
-								src={'https://image.tmdb.org/t/p/original' + person.profile_path}
+								src={imagePrefix + person.profile_path}
 								height={200}
 								width={200}
 								alt={person.name}

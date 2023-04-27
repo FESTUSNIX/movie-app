@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ImageSlider } from './ImageSlider'
 import placeholderImage from '../../public/ef3-placeholder-image.jpg'
 import { SectionHeading } from './SectionHeading'
+import imagePrefix from '../assets/imagePrefix'
 
 type Props = {
 	data: MovieList
@@ -30,7 +31,7 @@ export const MoviesSlider = ({ data, title }: Props) => {
 							</span>
 						</h4>
 						<Image
-							src={movie.poster_path ? 'https://image.tmdb.org/t/p/original' + movie.poster_path : placeholderImage}
+							src={movie.poster_path ? imagePrefix + movie.poster_path : placeholderImage}
 							alt={movie.title}
 							width={300}
 							height={300}

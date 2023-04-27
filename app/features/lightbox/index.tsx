@@ -9,6 +9,7 @@ import { useLightboxContext } from './hooks/useLightboxContext'
 import { ImageSlider } from '../../components/ImageSlider'
 import { usePathname, useSearchParams } from 'next/navigation'
 import useKeypress from '../../hooks/useKeypress'
+import imagePrefix from '@/app/assets/imagePrefix'
 const bodyScroll = require('body-scroll-toggle')
 
 export const Lightbox = () => {
@@ -57,7 +58,7 @@ export const Lightbox = () => {
 					</button>
 					<div className='relative h-full w-full'>
 						<Image
-							src={'https://image.tmdb.org/t/p/original' + images[currentImage].file_path}
+							src={imagePrefix + images[currentImage].file_path}
 							alt='Movie poster'
 							fill={true}
 							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px'
@@ -69,7 +70,7 @@ export const Lightbox = () => {
 						{images.map((image, index) => (
 							<Image
 								key={image.file_path}
-								src={'https://image.tmdb.org/t/p/original' + image.file_path}
+								src={imagePrefix + image.file_path}
 								alt='Movie poster'
 								width={80}
 								height={80}
