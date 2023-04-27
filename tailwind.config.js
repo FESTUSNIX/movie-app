@@ -13,7 +13,11 @@ module.exports = {
 			},
 			colors: {
 				primary: '#059669',
-				bg: '#05161e',
+				bg: {
+					DEFAULT: '#05161e',
+					hover: '#0f2028',
+					active: '#14252d'
+				},
 				textSecondary: '#4E4E50'
 			}
 		}

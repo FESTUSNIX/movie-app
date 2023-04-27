@@ -23,10 +23,10 @@ export const Field = ({ searchValue, setSearchValue, fetchMovies }: Props) => {
 	}
 
 	return (
-		<label className='my-4 flex w-full cursor-text items-center rounded-2xl border border-white/5 bg-bg/25 px-4 py-2.5 focus-within:border-white/30 active:border-white/20'>
+		<label className='my-4 flex w-full cursor-text items-center rounded-2xl border border-white/5 bg-bg/25 px-4 py-2.5 duration-200 focus-within:border-white/30 hover:border-white/20 active:border-white/20'>
 			<input
 				type='text'
-				placeholder='Search for a movie'
+				placeholder='What are you looking for?'
 				value={searchValue}
 				onChange={e => setSearchValue(e.target.value)}
 				onKeyUp={e => handleSearchSubmit(e)}

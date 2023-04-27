@@ -191,3 +191,8 @@ export type SearchMulti = {
 }
 
 export type SearchMultiResult = (BasicMovieDetails | TVListObject) & MediaType
+
+export type genre = {
+	id: number
+	name: string
+}

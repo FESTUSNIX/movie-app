@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field } from './components/Field'
 import { SearchMultiResult } from '@/types/types'
 import { GridContainer } from './components/GridContainer'
@@ -17,13 +17,13 @@ const Search = () => {
 	const [hasMore, setHasMore] = useState(true)
 	const [page, setPage] = useState(1)
 
+	const [includeAdult, setIncludeAdult] = useState(false)
+	const [mediaType, setMediaType] = useState('multi')
+	const [includedGenres, setIncludedGenres] = useState<(number | 'all')[]>([])
+
 	const fetchMovies = async (getNewPage: boolean = false) => {
 		try {
 			if (searchValue === '') return setSearchResults([])
-
-			setIsPending(true)
-
-			let fetchPage = getNewPage ? page + 1 : 1
 
 			if (!getNewPage) {
 				setPage(1)
@@ -32,12 +32,22 @@ const Search = () => {
 				setPage(prevPage => prevPage + 1)
 			}
 
-			const res = await fetch(`/api/search/${searchValue}/${fetchPage}`)
+			setIsPending(true)
+
+			const res = await fetch(
+				`/api/search/${searchValue}/${getNewPage ? page + 1 : 1}?media_type=${mediaType}&include_adult=${includeAdult}`
+			)
 			const data = await res.json()
 
-			setHasMore(data.page < data.total_pages)
+			const filteredData =
+				!includedGenres.length || includedGenres.includes('all')
+					? data.results
+					: data.results.filter((result: SearchMultiResult) =>
+							result.genre_ids.some(genre => includedGenres.includes(genre))
+					  )
 
-			setSearchResults(prevSearchResults => (getNewPage ? [...prevSearchResults, ...data.results] : [...data.results]))
+			setSearchResults(prevSearchResults => (getNewPage ? [...prevSearchResults, ...filteredData] : [...filteredData]))
+			setHasMore(data.page < data.total_pages)
 			setIsPending(false)
 		} catch (error) {
 			let message
@@ -50,11 +60,17 @@ const Search = () => {
 		}
 	}
 
+	useEffect(() => {
+		if (searchValue !== '') {
+			fetchMovies()
+		}
+	}, [mediaType, includeAdult, includedGenres])
+
 	return (
 		<div className='nav-margin wrapper'>
 			<Field searchValue={searchValue} setSearchValue={setSearchValue} fetchMovies={fetchMovies} />
 
-			<Filter />
+			<Filter setIncludeAdult={setIncludeAdult} setMediaType={setMediaType} setIncludedGenres={setIncludedGenres} />
 
 			{error && <div>{error}</div>}
 			{!searchResults.length && searchValue.trim() && !hasMore && (
