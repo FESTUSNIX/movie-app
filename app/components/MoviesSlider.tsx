@@ -24,7 +24,7 @@ export const MoviesSlider = ({ data, title }: Props) => {
 						href={`/movie/${movie.id}`}
 						key={movie.id}
 						draggable='false'
-						className='group relative w-full min-w-[140px] max-w-xs cursor-pointer overflow-hidden rounded border-2 border-transparent duration-300 hover:scale-105 hover:border-white'>
+						className='group relative w-full min-w-[140px] max-w-xs cursor-pointer overflow-hidden rounded-xl border-2 border-transparent duration-300 hover:scale-105 hover:border-white'>
 						<h4 className='absolute z-10 mx-2 my-2 overflow-hidden text-sm font-bold'>
 							<span className='block -translate-y-full opacity-0 duration-300 group-hover:translate-y-0 group-hover:opacity-100'>
 								{movie.title}
@@ -35,7 +35,7 @@ export const MoviesSlider = ({ data, title }: Props) => {
 							alt={movie.title}
 							width={300}
 							height={300}
-							className='aspect-[2/3] rounded duration-300'
+							className='aspect-[2/3] rounded-xl duration-300'
 						/>
 						<div className='absolute inset-0 bg-black/40 opacity-0 duration-300 ease-in-out group-hover:opacity-100'></div>
 					</Link>

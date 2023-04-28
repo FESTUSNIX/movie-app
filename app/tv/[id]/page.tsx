@@ -1,9 +1,13 @@
 import imagePrefix from '@/app/assets/imagePrefix'
-import { Background } from '@/app/components'
+import { Background, ImageSlider } from '@/app/components'
+import { formatMinutes } from '@/app/utils/formatMinutes'
 import { getTVDetails } from '@/lib/getTVDetails'
+import { getTVSeasonDetails } from '@/lib/getTVSeasonDetails'
 
 import Image from 'next/image'
 import React from 'react'
+import { Episodes } from './components/Episodes'
+import { SeasonPicker } from './components/SeasonPicker'
 
 type Props = {
 	params: { id: number }
@@ -20,7 +24,7 @@ const Tv = async ({ params: { id } }: Props) => {
 	const details = await getTVDetails(id)
 
 	return (
-		<div className='nav-margin'>
+		<div className='nav-margin wrapper'>
 			<Background imagePath={details.backdrop_path} />
 
 			<p>{details.id}</p>
@@ -36,23 +40,10 @@ const Tv = async ({ params: { id } }: Props) => {
 			<br />
 			<br />
 
-			<p>
-				{details.seasons.map(season => (
-					<div key={season.id}>
-						<p>{season.name}</p>
-						<p>{season.overview}</p>
-						<p>Season no. - {season.season_number}</p>
-						<p>Episodes - {season.episode_count}</p>
-						<p>{season.air_date}</p>
+			<SeasonPicker details={details} />
 
-						<Image src={imagePrefix + season.poster_path} alt={details.name} width={300} height={300} />
-
-						<br />
-						<br />
-						<br />
-					</div>
-				))}
-			</p>
+			{/* @ts-expect-error Server Component */}
+			<Episodes id={id} details={details} />
 		</div>
 	)
 }

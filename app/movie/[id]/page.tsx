@@ -86,7 +86,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 								height={200}
 								width={200}
 								alt='Movie poster'
-								className='flex aspect-[2/3] w-48 cursor-pointer flex-col items-center overflow-hidden rounded bg-neutral-900'
+								className='flex aspect-[2/3] w-48 cursor-pointer flex-col items-center overflow-hidden rounded-xl bg-neutral-900'
 							/>
 						</LightboxOpener>
 					))}
@@ -97,7 +97,7 @@ const MovieDetails = async ({ params: { id } }: Props) => {
 						<Link
 							href={`/person/${person.id}`}
 							key={person.id}
-							className='flex w-48 flex-col items-center overflow-hidden rounded bg-neutral-900'>
+							className='flex w-48 flex-col items-center overflow-hidden rounded-xl bg-neutral-900'>
 							<Image
 								src={imagePrefix + person.profile_path}
 								height={200}
