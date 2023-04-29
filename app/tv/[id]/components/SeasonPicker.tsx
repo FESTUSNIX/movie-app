@@ -15,10 +15,10 @@ export const SeasonPicker = ({ details, id }: Props) => {
 	return (
 		<div>
 			<div className='flex items-center'>
-				{details.seasons.map((season, index) => (
+				{details.seasons.map(season => (
 					<button
 						className={`cursor-pointer py-2 px-4 text-lg  duration-300  ${
-							activeSeason - 1 === index
+							activeSeason === season.season_number
 								? 'font-bold text-white'
 								: 'text-white/70 hover:text-white/90 active:text-white/75'
 						}`}
