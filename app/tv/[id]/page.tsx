@@ -1,12 +1,6 @@
-import imagePrefix from '@/app/assets/imagePrefix'
-import { Background, ImageSlider } from '@/app/components'
-import { formatMinutes } from '@/app/utils/formatMinutes'
+import { Background } from '@/app/components'
 import { getTVDetails } from '@/lib/getTVDetails'
-import { getTVSeasonDetails } from '@/lib/getTVSeasonDetails'
-
-import Image from 'next/image'
 import React from 'react'
-import { Episodes } from './components/Episodes'
 import { SeasonPicker } from './components/SeasonPicker'
 
 type Props = {
@@ -40,10 +34,7 @@ const Tv = async ({ params: { id } }: Props) => {
 			<br />
 			<br />
 
-			<SeasonPicker details={details} />
-
-			{/* @ts-expect-error Server Component */}
-			<Episodes id={id} details={details} />
+			<SeasonPicker details={details} id={id} />
 		</div>
 	)
 }

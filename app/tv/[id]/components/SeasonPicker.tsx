@@ -2,13 +2,15 @@
 
 import { TVDetails } from '@/types/types'
 import React, { useState } from 'react'
+import { Episodes } from './Episodes'
 
 type Props = {
 	details: TVDetails
+	id: number
 }
 
-export const SeasonPicker = ({ details }: Props) => {
-	const [activeSeason, setActiveSeason] = useState(0)
+export const SeasonPicker = ({ details, id }: Props) => {
+	const [activeSeason, setActiveSeason] = useState(1)
 
 	return (
 		<div>
@@ -16,14 +18,18 @@ export const SeasonPicker = ({ details }: Props) => {
 				{details.seasons.map((season, index) => (
 					<button
 						className={`cursor-pointer py-2 px-4 text-lg  duration-300  ${
-							activeSeason === index ? 'font-bold text-white' : 'text-white/70 hover:text-white/90 active:text-white/75'
+							activeSeason - 1 === index
+								? 'font-bold text-white'
+								: 'text-white/70 hover:text-white/90 active:text-white/75'
 						}`}
 						key={season.id}
-						onClick={() => setActiveSeason(index)}>
+						onClick={() => setActiveSeason(season.season_number)}>
 						{season.name}
 					</button>
 				))}
 			</div>
+
+			<Episodes id={id} activeSeason={activeSeason} />
 		</div>
 	)
 }
