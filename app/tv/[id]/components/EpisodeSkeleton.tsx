@@ -4,8 +4,8 @@ import Skeleton from 'react-loading-skeleton'
 export const EpisodeSkeleton = () => {
 	return (
 		<div className='relative'>
-			<div className='mb-2 h-40'>
-				<Skeleton height={'100%'} />
+			<div className='mb-2 h-40 overflow-hidden rounded-xl'>
+				<Skeleton height={'100%'} style={{ borderRadius: '12px' }} />
 			</div>
 
 			<div className='absolute w-full'>

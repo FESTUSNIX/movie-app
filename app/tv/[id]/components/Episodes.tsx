@@ -70,7 +70,7 @@ export const Episodes = ({ id, activeSeason }: Props) => {
 			}
 		}
 
-		fetchData()
+		// fetchData()
 	}, [activeSeason, id])
 
 	return (
