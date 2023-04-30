@@ -1,9 +1,10 @@
 'use client'
 
 import { ImageSlider } from '@/app/components'
-import {  TVSeasonDetails } from '@/types/types'
+import { TVSeasonDetails } from '@/types/types'
 import React, { useEffect, useState } from 'react'
 import { Episode } from './Episode'
+import { EpisodeSkeleton } from './EpisodeSkeleton'
 
 type Props = {
 	id: number
@@ -50,26 +51,37 @@ const sliderSettings = [
 
 export const Episodes = ({ id, activeSeason }: Props) => {
 	const [seasonDetails, setSeasonDetails] = useState<TVSeasonDetails>()
+	const [error, setError] = useState('')
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const res = await fetch(`/api/seasonDetails/${id}/${activeSeason}`)
-			const data = await res.json()
+			try {
+				const res = await fetch(`/api/seasonDetails/${id}/${activeSeason}`)
+				const data = await res.json()
 
-			setSeasonDetails(data)
+				setSeasonDetails(data)
+			} catch (err) {
+				let message
+				if (err instanceof Error) message = err.message
+				else message = String(err)
+
+				console.log(message)
+				setError(message)
+			}
 		}
 
 		fetchData()
 	}, [activeSeason, id])
 
-	if (!seasonDetails) return null
-
 	return (
 		<div className='py-4'>
+			{error && <div>{error}</div>}
+
 			<ImageSlider responsiveSettings={sliderSettings}>
-				{seasonDetails?.episodes.map(episode => (
-					<Episode key={episode.id} episode={episode}/>
-				))}
+				{seasonDetails?.episodes.map(episode => <Episode key={episode.id} episode={episode} />) ||
+					Array(6)
+						.fill(0)
+						.map((_, index) => <EpisodeSkeleton key={index} />)}
 			</ImageSlider>
 		</div>
 	)

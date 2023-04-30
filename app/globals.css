@@ -163,6 +163,13 @@
 	.dark-react-select-container .dark-react-select__single-value {
 		@apply text-white/60;
 	}
+
+	/* Skeleton Loader */
+
+	span.react-loading-skeleton {
+		--base-color: #1f3038;
+		--highlight-color: #384951;
+	}
 }
 
 @layer utilities {
