@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Field } from './components/Field'
 import { GridContainer } from './components/GridContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -20,6 +20,8 @@ const Search = () => {
 	const [includeAdult, setIncludeAdult] = useState(false)
 	const [mediaType, setMediaType] = useState('multi')
 	const [includedGenres, setIncludedGenres] = useState<(number | 'all')[]>([])
+
+	const searchInputElement = useRef<HTMLInputElement>(null)
 
 	const fetchMovies = async (getNewPage: boolean = false) => {
 		try {
@@ -61,6 +63,10 @@ const Search = () => {
 	}
 
 	useEffect(() => {
+		searchInputElement?.current?.focus()
+	}, [])
+
+	useEffect(() => {
 		if (searchValue !== '') {
 			fetchMovies()
 		}
@@ -68,7 +74,12 @@ const Search = () => {
 
 	return (
 		<div className='nav-margin wrapper'>
-			<Field searchValue={searchValue} setSearchValue={setSearchValue} fetchMovies={fetchMovies} />
+			<Field
+				searchValue={searchValue}
+				setSearchValue={setSearchValue}
+				fetchMovies={fetchMovies}
+				searchInputElement={searchInputElement}
+			/>
 
 			<Filter setIncludeAdult={setIncludeAdult} setMediaType={setMediaType} setIncludedGenres={setIncludedGenres} />
 

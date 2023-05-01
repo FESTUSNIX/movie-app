@@ -1,16 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import React, { KeyboardEvent, useEffect, useState } from 'react'
+import React, { KeyboardEvent, useEffect } from 'react'
 import SearchIcon from '@/public/search.svg'
 
 type Props = {
 	searchValue: string
+	searchInputElement: React.RefObject<HTMLInputElement>
 	setSearchValue: React.Dispatch<React.SetStateAction<string>>
 	fetchMovies: () => void
 }
 
-export const Field = ({ searchValue, setSearchValue, fetchMovies }: Props) => {
+export const Field = ({ searchValue, setSearchValue, fetchMovies, searchInputElement }: Props) => {
 	useEffect(() => {
 		const timeoutId = setTimeout(() => fetchMovies(), 750)
 		return () => clearTimeout(timeoutId)
@@ -30,6 +31,7 @@ export const Field = ({ searchValue, setSearchValue, fetchMovies }: Props) => {
 				value={searchValue}
 				onChange={e => setSearchValue(e.target.value)}
 				onKeyUp={e => handleSearchSubmit(e)}
+				ref={searchInputElement}
 				className='h-full grow bg-transparent text-2xl outline-none'
 			/>
 

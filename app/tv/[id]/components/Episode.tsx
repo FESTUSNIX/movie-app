@@ -20,7 +20,7 @@ export const Episode = ({ episode }: Props) => {
 			className='group relative w-full cursor-pointer duration-300 hover:scale-105'
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			transition={{ duration: 0.2 }}>
+			transition={{ duration: 0.5 }}>
 			<div className='relative mb-1 overflow-hidden rounded-xl border-2 border-transparent shadow-sm duration-300 hover:border-white'>
 				{isLoadingImage && (
 					<div className='mb-2 aspect-[41/23] h-auto w-full overflow-hidden rounded-xl'>
