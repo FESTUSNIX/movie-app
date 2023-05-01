@@ -50,16 +50,21 @@ const sliderSettings = [
 ]
 
 export const Episodes = ({ id, activeSeason }: Props) => {
-	const [seasonDetails, setSeasonDetails] = useState<TVSeasonDetails>()
+	const [seasonDetails, setSeasonDetails] = useState<TVSeasonDetails | null>(null)
 	const [error, setError] = useState('')
+	const [isPending, setIsPending] = useState(true)
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+				setIsPending(true)
+				setSeasonDetails(null)
+
 				const res = await fetch(`/api/seasonDetails/${id}/${activeSeason}`)
 				const data = await res.json()
 
 				setSeasonDetails(data)
+				setIsPending(false)
 			} catch (err) {
 				let message
 				if (err instanceof Error) message = err.message
@@ -67,10 +72,11 @@ export const Episodes = ({ id, activeSeason }: Props) => {
 
 				console.log(message)
 				setError(message)
+				setIsPending(false)
 			}
 		}
 
-		// fetchData()
+		fetchData()
 	}, [activeSeason, id])
 
 	return (
@@ -78,7 +84,10 @@ export const Episodes = ({ id, activeSeason }: Props) => {
 			{error && <div>{error}</div>}
 
 			<ImageSlider responsiveSettings={sliderSettings}>
-				{seasonDetails?.episodes.map(episode => <Episode key={episode.id} episode={episode} />) ||
+				{seasonDetails?.episodes.map(episode => (
+					<Episode key={episode.id} episode={episode} />
+				))}
+				{isPending &&
 					Array(6)
 						.fill(0)
 						.map((_, index) => <EpisodeSkeleton key={index} />)}
