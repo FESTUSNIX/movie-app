@@ -1,9 +1,9 @@
-import { SearchMultiResult } from '@/types/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import placeholderImage from '@/public/ef3-placeholder-image.jpg'
 import imagePrefix from '@/app/assets/imagePrefix'
+import { SearchMultiResult } from '@/types/Search'
 
 type Props = {
 	result: SearchMultiResult

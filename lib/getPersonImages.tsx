@@ -1,4 +1,4 @@
-import { PersonImages } from '@/types/types'
+import { PersonImages } from '@/types/People'
 
 export const getPersonImages = async (id: number) => {
 	const res = await fetch(`https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.API_KEY}`)

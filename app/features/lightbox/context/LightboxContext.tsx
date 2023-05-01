@@ -1,6 +1,6 @@
 'use client'
 
-import { Image } from '@/types/types'
+import { Image } from '@/types/Shared'
 import { Dispatch, SetStateAction, createContext, useState } from 'react'
 
 type Props = {

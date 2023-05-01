@@ -1,4 +1,4 @@
-import { Collection } from '@/types/types'
+import { Collection } from '@/types/Collections'
 
 export const getCollections = async (id: number) => {
 	const res = await fetch(`https://api.themoviedb.org/3/collection/${id}?api_key=${process.env.API_KEY}`)

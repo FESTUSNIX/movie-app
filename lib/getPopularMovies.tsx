@@ -1,4 +1,4 @@
-import { MovieList } from '@/types/types'
+import { MovieList } from '@/types/Movies'
 
 export const getPopularMovies = async (limit: number = -1) => {
 	const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`)

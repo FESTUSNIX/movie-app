@@ -1,6 +1,4 @@
-import { genre } from '@/types/types'
-
-const genres: genre[] = [
+const genres: { id: number; name: string }[] = [
 	{
 		id: 28,
 		name: 'Action'

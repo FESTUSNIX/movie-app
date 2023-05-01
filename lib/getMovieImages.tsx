@@ -1,4 +1,4 @@
-import { MovieImages } from '@/types/types'
+import { MovieImages } from '@/types/Movies'
 
 export const getMovieImages = async (id: number) => {
 	const res = await fetch(

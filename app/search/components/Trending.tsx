@@ -1,9 +1,9 @@
 'use client'
 
-import { SearchMulti, SearchMultiResult } from '@/types/types'
 import React, { useEffect, useState } from 'react'
 import { GridContainer } from './GridContainer'
 import { SectionHeading } from '@/app/components/SectionHeading'
+import { SearchMulti, SearchMultiResult } from '@/types/Search'
 
 export const Trending = () => {
 	const [trending, setTrending] = useState<SearchMultiResult[]>()

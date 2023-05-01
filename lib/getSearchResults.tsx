@@ -1,4 +1,4 @@
-import { SearchMulti } from '@/types/types'
+import { SearchMulti } from '@/types/Search'
 
 export const getSearchResults = async (
 	query: string,

@@ -1,10 +1,11 @@
 'use client'
 
 import { ImageSlider } from '@/app/components'
-import { TVSeasonDetails } from '@/types/types'
 import React, { useEffect, useState } from 'react'
 import { Episode } from './Episode'
 import { EpisodeSkeleton } from './EpisodeSkeleton'
+import ErrorDisplay from '@/app/components/ErrorDisplay'
+import { TVSeasonDetails } from '@/types/TV'
 
 type Props = {
 	id: number
@@ -80,8 +81,8 @@ export const Episodes = ({ id, activeSeason }: Props) => {
 	}, [activeSeason, id])
 
 	return (
-		<div className='py-4'>
-			{error && <div>{error}</div>}
+		<div className='mb-10 py-4'>
+			{error && <ErrorDisplay>{error}</ErrorDisplay>}
 
 			<ImageSlider responsiveSettings={sliderSettings}>
 				{seasonDetails?.episodes.map(episode => (

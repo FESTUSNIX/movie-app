@@ -1,4 +1,4 @@
-import { Collections } from '@/types/types'
+import { Collections } from '@/types/Collections'
 
 export const getCollectionsSearch = async (query: string) => {
 	const res = await fetch(

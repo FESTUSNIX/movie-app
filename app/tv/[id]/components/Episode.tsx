@@ -1,11 +1,11 @@
 'use client'
 
 import imagePrefix from '@/app/assets/imagePrefix'
-import { Episode as EpisodeType } from '@/types/types'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Skeleton from 'react-loading-skeleton'
+import { Episode as EpisodeType } from '@/types/TV'
 
 type Props = {
 	episode: EpisodeType

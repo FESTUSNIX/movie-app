@@ -1,5 +1,5 @@
 import { getMovieDetails } from '@/lib/getMovieDetails'
-import { MovieDetails } from '@/types/types'
+import { MovieDetails } from '@/types/Movies'
 import React from 'react'
 
 type Props = {

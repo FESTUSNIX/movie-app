@@ -1,4 +1,4 @@
-import { TVDetails } from '@/types/types'
+import { TVDetails } from '@/types/TV'
 
 export const getTVDetails = async (id: number) => {
 	const res = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.API_KEY}`)

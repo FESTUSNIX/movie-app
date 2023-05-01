@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from 'react'
 import { Field } from './components/Field'
-import { SearchMultiResult } from '@/types/types'
 import { GridContainer } from './components/GridContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Trending } from './components/Trending'
 import { Filter } from './components/Filter'
+import { SearchMultiResult } from '@/types/Search'
 
 const Search = () => {
 	const [isPending, setIsPending] = useState(false)

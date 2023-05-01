@@ -1,8 +1,8 @@
 'use client'
 
-import { TVDetails } from '@/types/types'
 import React, { useState } from 'react'
 import { Episodes } from './Episodes'
+import { TVDetails } from '@/types/TV'
 
 type Props = {
 	details: TVDetails

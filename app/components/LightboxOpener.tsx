@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useLightboxContext } from '../features/lightbox/hooks/useLightboxContext'
-import { Image } from '@/types/types'
+import { Image } from '@/types/Shared'
 
 type Props = {
 	children: React.ReactNode
