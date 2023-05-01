@@ -8,6 +8,12 @@ import { Trending } from './components/Trending'
 import { Filter } from './components/Filter'
 import { SearchMultiResult } from '@/types/Search'
 
+export async function generateMetadata() {
+	const title = 'Search' + ' | Novies'
+
+	return { title }
+}
+
 const Search = () => {
 	const [isPending, setIsPending] = useState(false)
 	const [error, setError] = useState('')

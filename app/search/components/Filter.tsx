@@ -1,6 +1,7 @@
 'use client'
 
 import genres from '@/app/assets/genres'
+import { selectOptions } from '@/types/Shared'
 import React from 'react'
 import Select from 'react-select'
 
@@ -9,7 +10,6 @@ type Props = {
 	setMediaType: React.Dispatch<React.SetStateAction<string>>
 	setIncludedGenres: React.Dispatch<React.SetStateAction<(number | 'all')[]>>
 }
-type selectOptions = { value: any; label: string }[]
 
 let genresOptions: selectOptions = [{ value: 'all', label: 'All' }]
 genres.filter(genre => genresOptions.push({ value: genre.id, label: genre.name }))

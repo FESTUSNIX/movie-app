@@ -11,3 +11,5 @@ export type Image = {
 export type MediaType = {
 	media_type: 'movie' | 'tv' | 'person'
 }
+
+export type selectOptions = { value: any; label: string }[]

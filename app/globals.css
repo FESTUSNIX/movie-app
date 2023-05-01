@@ -120,12 +120,17 @@
 
 	/* react-select */
 
-	.dark-react-select-container .dark-react-select__control {
-		@apply rounded-xl border-2 border-white/5 bg-bg hover:border-white/30;
-	}
 
+	.dark-react-select-container .dark-react-select__control {
+		@apply rounded-xl border-2 border-white/5 bg-bg hover:border-white/30 cursor-pointer;
+	}
+	
 	.dark-react-select-container .dark-react-select__control--is-focused {
 		@apply border-white/5 shadow-none hover:border-white/10;
+	}
+	
+	.dark-react-select-container.paddingXL .dark-react-select__control {
+		@apply py-1;
 	}
 
 	.dark-react-select-container .dark-react-select__menu {
@@ -153,15 +158,21 @@
 		@apply bg-white/20;
 	}
 
-	.dark-react-select-container .dark-react-select__dropdown-indicator,
+
 	.dark-react-select-container .dark-react-select__clear-indicator {
 		@apply text-white/30 hover:text-white/60;
 	}
 
+	
+	.dark-react-select-container .dark-react-select__dropdown-indicator,
 	.dark-react-select-container .dark-react-select__input-container,
 	.dark-react-select-container .dark-react-select__placeholder,
 	.dark-react-select-container .dark-react-select__single-value {
 		@apply text-white/60;
+	}
+
+	.dark-react-select-container .dark-react-select__single-value {
+		@apply text-white/90;
 	}
 
 	/* Skeleton Loader */
