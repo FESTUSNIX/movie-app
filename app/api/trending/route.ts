@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getTrending } from '@/lib/getTrending'
+import { getTrending } from '@/lib/trending/getTrending'
 
 export async function GET(request: Request) {
 	const data = await getTrending()

@@ -1,4 +1,4 @@
-import { getGenres } from '@/lib/getGenres'
+import { getGenres } from '@/lib/genres/getGenres'
 
 import { NextResponse } from 'next/server'
 

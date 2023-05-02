@@ -1,11 +1,11 @@
 import { formatMinutes } from '@/app/utils/formatMinutes'
-import { getMovieDetails } from '@/lib/getMovieDetails'
-import { getMovieImages } from '@/lib/getMovieImages'
+import { getMovieDetails } from '@/lib/movie/getMovieDetails'
+import { getMovieImages } from '@/lib/movie/getMovieImages'
 import Image from 'next/image'
-import { getSimilar } from '@/lib/getSimilar'
+import { getSimilarMovies } from '@/lib/movie/getSimilarMovies'
 import { Background, Button, MoviesSlider, ImageSlider, LightboxOpener } from '@/app/components'
 import Link from 'next/link'
-import { getMovieCredits } from '@/lib/getMovieCredits'
+import { getMovieCredits } from '@/lib/movie/getMovieCredits'
 import React from 'react'
 import imagePrefix from '@/app/assets/imagePrefix'
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props) {
 
 const MovieDetails = async ({ params: { id } }: Props) => {
 	const [images, details] = await Promise.all([getMovieImages(id), getMovieDetails(id)])
-	const similiarMovies = await getSimilar(id)
+	const similiarMovies = await getSimilarMovies(id)
 	const credits = await getMovieCredits(id)
 
 	return (

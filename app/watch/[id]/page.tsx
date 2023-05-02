@@ -1,4 +1,4 @@
-import { getMovieDetails } from '@/lib/getMovieDetails'
+import { getMovieDetails } from '@/lib/movie/getMovieDetails'
 import { MovieDetails } from '@/types/Movies'
 import React from 'react'
 

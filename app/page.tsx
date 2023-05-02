@@ -1,4 +1,4 @@
-import { getPopularMovies } from '@/lib/getPopularMovies'
+import { getPopularMovies } from '@/lib/movie/getPopularMovies'
 import { Hero } from './components/Hero'
 
 export default async function Home() {

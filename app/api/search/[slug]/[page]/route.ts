@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getSearchResults } from '@/lib/getSearchResults'
+import { getSearchResults } from '@/lib/search/getSearchResults'
 
 export async function GET(request: Request, { params }: { params: { slug: string; page: string } }) {
 	const { slug, page } = params

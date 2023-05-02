@@ -1,4 +1,4 @@
-import { MovieImages } from '@/types/Movies'
+import { MediaImages } from '@/types/Shared'
 
 export const getMovieImages = async (id: number) => {
 	const res = await fetch(
@@ -7,7 +7,7 @@ export const getMovieImages = async (id: number) => {
 
 	if (!res.ok) throw new Error('failed to fetch data')
 
-	const data: MovieImages = await res.json()
+	const data: MediaImages = await res.json()
 
 	return data
 }

@@ -1,4 +1,4 @@
-import { MovieCredits } from '@/types/Movies'
+import { Credits } from '@/types/Shared'
 
 export const getMovieCredits = async (id: number) => {
 	const res = await fetch(
@@ -7,7 +7,7 @@ export const getMovieCredits = async (id: number) => {
 
 	if (!res.ok) throw new Error('failed to fetch data')
 
-	const data: MovieCredits = await res.json()
+	const data: Credits = await res.json()
 
 	return data
 }
