@@ -6,10 +6,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import imagePrefix from '@/app/assets/imagePrefix'
 import { getTVImages } from '@/lib/tv/getTVImages'
-import { GridContainer } from '@/app/search/components/GridContainer'
 import { getTVVideos } from '@/lib/tv/getTVVideos'
-import { getTVWatchProvider } from '@/lib/tv/getTVWatchProviders'
 import { getTVCredits } from '@/lib/tv/getTVCredits'
+import Badges from './components/Badges'
+import Details from './components/Details'
 
 type Props = {
 	params: { id: number }
@@ -32,83 +32,52 @@ const Tv = async ({ params: { id } }: Props) => {
 		<div className='nav-margin wrapper'>
 			<Background imagePath={details.backdrop_path} />
 
-			<div className='wrapper grow pt-64'>
-				<h1 aria-label={details.name} className='mb-2 font-montserrat'>
-					{images.logos.length ? (
-						<Image
-							src={imagePrefix + images.logos[0].file_path}
-							alt={details.name}
-							width={400}
-							height={400}
-							className='w-full min-w-[140px] max-w-sm'
-						/>
-					) : (
-						<span className='block max-w-6xl text-6xl font-bold'>{details.name}</span>
-					)}
-				</h1>
+			<h1 aria-label={details.name} className='mb-4 pt-40 font-montserrat'>
+				{images.logos.length ? (
+					<Image
+						src={imagePrefix + images.logos[0].file_path}
+						alt={details.name}
+						width={400}
+						height={400}
+						className='max-h-48 w-full min-w-[140px] max-w-lg object-contain object-left'
+					/>
+				) : (
+					<span className='block max-w-6xl text-6xl font-bold'>{details.name}</span>
+				)}
+			</h1>
 
-				<div className='mb-4 flex gap-4 text-gray-200'>
-					<h3>{details.vote_average.toFixed(1)}</h3>
-				</div>
+			<Badges details={details} />
 
-				<div className='mb-8 '>
-					{details.genres.map((genre, index) => (
-						<span key={genre.id}>
-							{genre.name}
-							{details.genres.length - 1 !== index ? ', ' : ''}
-						</span>
-					))}
-				</div>
+			<h3 className='mb-8 max-w-prose text-neutral-200'>{details.overview}</h3>
 
-				<div className='mb-8 flex items-center gap-4'>
-					<Link href={`watch/${id}`}>
-						<Button>
-							<Image src='/play-circle.svg' height={20} width={20} alt='Play movie' />
-							<span>play</span>
-						</Button>
-					</Link>
-
-					<Button secondary>
-						<Image src='/bookmark.svg' height={20} width={20} alt='Save to watch list' />
-						<span>save</span>
+			<div className='mb-24 flex items-center gap-4'>
+				<Link href={`watch/${id}`}>
+					<Button>
+						<Image src='/play-circle.svg' height={20} width={20} alt='Play movie' />
+						<span>play</span>
 					</Button>
-				</div>
+				</Link>
 
-				<h2 className='max-w-prose'>{details.overview}</h2>
+				<Button secondary>
+					<Image src='/bookmark.svg' height={20} width={20} alt='Save to watch list' />
+					<span>save</span>
+				</Button>
 			</div>
-
-			<p>Seasons - {details.number_of_seasons}</p>
-			<p>Episodes - {details.number_of_episodes}</p>
-			<p>First air date - {details.first_air_date}</p>
-			<p>Tagline - {details.tagline}</p>
-			<p>Type - {details.type}</p>
-			<p>
-				<span>Created by -</span>
-				{details.created_by.map(person => (
-					<div key={person.id}>
-						<span>{person.name}</span>
-					</div>
-				))}
-			</p>
-
-			<div className='mb-4 flex items-center gap-8'>
-				{details.networks.map(network => (
-					<div key={network.id}>
-						<Image
-							src={imagePrefix + network.logo_path}
-							alt={network.name}
-							width={100}
-							height={100}
-							className='h-auto'
-						/>
-					</div>
-				))}
-			</div>
-			<br />
-			<br />
-			<br />
 
 			<SeasonPicker details={details} id={id} />
+
+			<Details details={details} />
+
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
 
 			{credits.cast.map(person => (
 				<div key={person.id}>
@@ -122,7 +91,6 @@ const Tv = async ({ params: { id } }: Props) => {
 					/>
 				</div>
 			))}
-	
 
 			{videos.results.map(result => (
 				<div key={result.id}>

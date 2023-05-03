@@ -84,7 +84,7 @@ export const Episodes = ({ id, activeSeason }: Props) => {
 		<div className='mb-10 py-4'>
 			{error && <ErrorDisplay>{error}</ErrorDisplay>}
 
-			<ImageSlider responsiveSettings={sliderSettings}>
+			<ImageSlider responsiveSettings={sliderSettings} className='episodes-slider'>
 				{seasonDetails?.episodes.map(episode => (
 					<Episode key={episode.id} episode={episode} />
 				))}
