@@ -1,6 +1,6 @@
 'use client'
 
-import genres from '@/app/assets/genres'
+import genres from '@/app/constants/genres'
 import { selectOptions } from '@/types/Shared'
 import React from 'react'
 import Select from 'react-select'
@@ -14,7 +14,7 @@ type Props = {
 let genresOptions: selectOptions = [{ value: 'all', label: 'All' }]
 genres.filter(genre => genresOptions.push({ value: genre.id, label: genre.name }))
 
-export const Filter = ({ setIncludeAdult, setMediaType, setIncludedGenres }: Props) => {
+export const Filters = ({ setIncludeAdult, setMediaType, setIncludedGenres }: Props) => {
 	const adultContentOptions: selectOptions = [
 		{ value: false, label: 'Exclude Adult Content' },
 		{ value: true, label: 'Include Adult Content' }

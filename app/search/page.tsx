@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { Field } from './components/Field'
-import { GridContainer } from './components/GridContainer'
+import { Field } from './components/elements/Field'
+import { GridContainer } from './components/modules/GridContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { Trending } from './components/Trending'
-import { Filter } from './components/Filter'
+import { Trending } from './components/modules/Trending'
+import { Filters } from './components/modules/Filters'
 import { SearchMultiResult } from '@/types/Search'
 
 export async function generateMetadata() {
@@ -87,7 +87,7 @@ const Search = () => {
 				searchInputElement={searchInputElement}
 			/>
 
-			<Filter setIncludeAdult={setIncludeAdult} setMediaType={setMediaType} setIncludedGenres={setIncludedGenres} />
+			<Filters setIncludeAdult={setIncludeAdult} setMediaType={setMediaType} setIncludedGenres={setIncludedGenres} />
 
 			{error && <div>{error}</div>}
 			{!searchResults.length && searchValue.trim() && !hasMore && (

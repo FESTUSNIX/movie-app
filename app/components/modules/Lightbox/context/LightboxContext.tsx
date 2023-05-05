@@ -7,7 +7,7 @@ type Props = {
 	children: React.ReactNode
 }
 
-type Xd = {
+type LightboxContextType = {
 	showLightbox: boolean
 	setShowLightbox: Dispatch<SetStateAction<boolean>>
 	images: Image[]
@@ -15,7 +15,8 @@ type Xd = {
 	index: number
 	setIndex: Dispatch<SetStateAction<number>>
 }
-export const LightboxContext = createContext<Xd>({
+
+export const LightboxContext = createContext<LightboxContextType>({
 	showLightbox: false,
 	setShowLightbox: () => {},
 	images: [],

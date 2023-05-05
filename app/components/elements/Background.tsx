@@ -3,7 +3,7 @@
 import { useScrollPosition } from '@/app/hooks/useScrollPosition'
 import Image from 'next/image'
 import React from 'react'
-import imagePrefix from '../assets/imagePrefix'
+import imagePrefix from '@/app/constants/imagePrefix'
 
 export const Background = ({ imagePath }: { imagePath: string | null }) => {
 	const scrollPosition = useScrollPosition()

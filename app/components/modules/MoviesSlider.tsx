@@ -2,11 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ImageSlider } from './ImageSlider'
-import placeholderImage from '../../public/ef3-placeholder-image.jpg'
-import { SectionHeading } from './SectionHeading'
-import imagePrefix from '../assets/imagePrefix'
+import placeholderImage from '@/public/ef3-placeholder-image.jpg'
+import imagePrefix from '@/app/constants/imagePrefix'
 import { MovieList } from '@/types/Movies'
+import { SectionHeading } from '../elements/SectionHeading'
+import { ImageSlider } from '../elements/ImageSlider'
 
 type Props = {
 	data: MovieList

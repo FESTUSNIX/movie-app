@@ -2,9 +2,9 @@
 
 import { ImageSlider } from '@/app/components'
 import React, { useEffect, useState } from 'react'
-import { Episode } from './Episode'
-import { EpisodeSkeleton } from './EpisodeSkeleton'
-import ErrorDisplay from '@/app/components/ErrorDisplay'
+import { Episode } from '../elements/Episode'
+import { EpisodeSkeleton } from '../elements/EpisodeSkeleton'
+import ErrorDisplay from '@/app/components/elements/ErrorDisplay'
 import { TVSeasonDetails } from '@/types/TV'
 
 type Props = {

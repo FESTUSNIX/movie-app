@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { useLightboxContext } from '../features/lightbox/hooks/useLightboxContext'
 import { Image } from '@/types/Shared'
+import { useLightboxContext } from '../modules/Lightbox/hooks/useLightboxContext'
 
 type Props = {
 	children: React.ReactNode

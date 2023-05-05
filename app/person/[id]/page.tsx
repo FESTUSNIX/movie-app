@@ -2,9 +2,9 @@ import { getMovieDetails } from '@/lib/movie/getMovieDetails'
 import { getPersonDetails } from '@/lib/people/getPersonDetails'
 import { getPersonImages } from '@/lib/people/getPersonImages'
 import Image from 'next/image'
-import { ImageSlider } from '../../components/ImageSlider'
-import { LightboxOpener } from '@/app/components/LightboxOpener'
-import imagePrefix from '@/app/assets/imagePrefix'
+import { ImageSlider } from '../../components/elements/ImageSlider'
+import { LightboxOpener } from '@/app/components/elements/LightboxOpener'
+import imagePrefix from '@/app/constants/imagePrefix'
 
 type Props = {
 	params: { id: number }

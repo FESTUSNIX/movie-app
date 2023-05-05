@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { BrandLogo } from '../../components/BrandLogo'
+import { BrandLogo } from '@/app/components/elements/BrandLogo'
 import SearchIcon from '@/public/search.svg'
 import { Background } from './components/Background'
 import { SideMenu } from './components/SideMenu'

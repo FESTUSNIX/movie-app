@@ -20,7 +20,7 @@ export const SeasonPicker = ({ details, id }: Props) => {
 	return (
 		<div>
 			<Select
-				className='dark-react-select-container paddingXL w-40 max-w-full'
+				className='dark-react-select-container paddingXL max-w-max'
 				classNamePrefix='dark-react-select'
 				name='seasonsList'
 				placeholder='Pick a season'

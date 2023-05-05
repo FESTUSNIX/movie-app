@@ -1,5 +1,5 @@
 import { getPopularMovies } from '@/lib/movie/getPopularMovies'
-import { Hero } from './components/Hero'
+import { Hero } from './components/modules/Hero'
 
 export default async function Home() {
 	const popularMovies = await getPopularMovies(9)

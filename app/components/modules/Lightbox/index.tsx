@@ -1,15 +1,15 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import IconClose from '../../../public/x.svg'
+import IconClose from '@/public/x.svg'
 import OutsideClickHandler from 'react-outside-click-handler'
 import Image from 'next/image'
 import { useLightboxContext } from './hooks/useLightboxContext'
-import { ImageSlider } from '../../components/ImageSlider'
+import { ImageSlider } from '@/app/components/elements/ImageSlider'
 import { usePathname, useSearchParams } from 'next/navigation'
-import useKeypress from '../../hooks/useKeypress'
-import imagePrefix from '@/app/assets/imagePrefix'
-import ReactPortal from '@/app/components/ReactPortal'
+import useKeypress from '@/app//hooks/useKeypress'
+import imagePrefix from '@/app/constants/imagePrefix'
+import ReactPortal from '@/app/components/elements/ReactPortal'
 const bodyScroll = require('body-scroll-toggle')
 
 export const Lightbox = () => {

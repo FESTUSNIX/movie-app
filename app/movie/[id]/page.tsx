@@ -7,7 +7,7 @@ import { Background, Button, MoviesSlider, ImageSlider, LightboxOpener } from '@
 import Link from 'next/link'
 import { getMovieCredits } from '@/lib/movie/getMovieCredits'
 import React from 'react'
-import imagePrefix from '@/app/assets/imagePrefix'
+import imagePrefix from '@/app/constants/imagePrefix'
 
 type Props = {
 	params: { id: number }

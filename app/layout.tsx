@@ -1,12 +1,11 @@
-import { Navbar } from './components'
+import { Lightbox, Navbar } from './components'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import './globals.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { Lightbox } from './features/lightbox'
-import { LightboxProvider } from './features/lightbox/context/LightboxContext'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { Footer } from './features/footer'
+import { Footer } from './components/modules/Footer'
+import { LightboxProvider } from './components/modules/Lightbox/context/LightboxContext'
 
 const montserrat = Montserrat({
 	subsets: ['latin'],

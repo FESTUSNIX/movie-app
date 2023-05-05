@@ -121,11 +121,11 @@
 	/* react-select */
 
 	.dark-react-select-container .dark-react-select__control {
-		@apply cursor-pointer rounded-xl border-2 border-white/5 bg-bg hover:border-white/30;
+		@apply cursor-pointer rounded-xl border-2 border-white/5 bg-bg;
 	}
 
 	.dark-react-select-container .dark-react-select__control--is-focused {
-		@apply border-white/5 shadow-none hover:border-white/10;
+		@apply border-white/10 shadow-none hover:border-white/10;
 	}
 
 	.dark-react-select-container.paddingXL .dark-react-select__control {
@@ -137,7 +137,7 @@
 	}
 
 	.dark-react-select-container .dark-react-select__option {
-		@apply min-w-max bg-bg  text-neutral-200 hover:bg-bg-hover;
+		@apply min-w-max cursor-pointer bg-bg text-neutral-200 hover:bg-bg-hover;
 	}
 
 	.dark-react-select-container .dark-react-select__option--is-selected {

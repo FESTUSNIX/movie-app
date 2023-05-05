@@ -1,4 +1,4 @@
-import Badge from '@/app/components/Badge'
+import Badge from '@/app/components/elements/Badge'
 import Image from 'next/image'
 import React from 'react'
 import StarIcon from '@/public/star.svg'

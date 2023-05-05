@@ -1,6 +1,6 @@
 'use client'
 
-import imagePrefix from '@/app/assets/imagePrefix'
+import imagePrefix from '@/app/constants/imagePrefix'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'

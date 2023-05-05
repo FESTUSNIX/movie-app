@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { GridItem } from './GridItem'
+import { GridItem } from '../elements/GridItem'
 import { SearchMultiResult } from '@/types/Search'
 
 type Props = {

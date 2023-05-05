@@ -2,12 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { MovieList } from '../../types/types'
-import { Button } from './Button'
+import { Button } from '../elements/Button'
 import Slider from 'react-slick'
-import InfiniteScroll from 'react-infinite-scroll-component'
 import { useState } from 'react'
-import imagePrefix from '../assets/imagePrefix'
+import imagePrefix from '@/app/constants/imagePrefix'
+import { MovieList } from '@/types/Movies'
 
 type Props = {
 	data: MovieList

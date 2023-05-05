@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { GridContainer } from './GridContainer'
-import { SectionHeading } from '@/app/components/SectionHeading'
+import { SectionHeading } from '@/app/components/elements/SectionHeading'
 import { SearchMulti, SearchMultiResult } from '@/types/Search'
 
 export const Trending = () => {
