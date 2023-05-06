@@ -77,50 +77,15 @@ const Tv = async ({ params: { id } }: Props) => {
 			<br />
 			<br />
 			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
 
 			<div className='wrapper'>
 				<AdditionalItems>
 					{/* @ts-expect-error Server Component */}
-					<Cast id={id} />
-					{/* @ts-expect-error Server Component */}
 					<Images id={id} />
-					{/* @ts-expect-error Server Component */}
-					<Videos id={id} />
-				</AdditionalItems>
+					{/* <Cast id={id} /> */}
 
-				{/* <div className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7'>
-				{images.posters.map(image => (
-					<Image src={imagePrefix + image.file_path} key={image.file_path} alt='image' width={700} height={700} />
-					))}
-			</div>
-			
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<div className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7'>
-				{images.backdrops.map(image => (
-					<Image src={imagePrefix + image.file_path} key={image.file_path} alt='image' width={700} height={700} />
-					))}
-			</div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<div className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7'>
-			{images.logos.map(image => (
-					<Image src={imagePrefix + image.file_path} key={image.file_path} alt='image' width={700} height={700} />
-					))}
-				</div> */}
+					{/* <Videos id={id} /> */}
+				</AdditionalItems>
 			</div>
 		</div>
 	)
